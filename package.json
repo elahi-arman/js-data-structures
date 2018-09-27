@@ -1,0 +1,14 @@
+{
+  "name": "js-data-structures",
+  "version": "0.0.1",
+  "description": "A package of data structures implemented in different styles",
+  "main": "index.js",
+  "repository": "https://github.com/elahi-arman/js-data-structures",
+  "author": "Arman Elahi",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {},
+  "devDependencies": {
+    "jest": "^23.5.0"
+  }
+}
