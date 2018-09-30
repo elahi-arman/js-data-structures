@@ -1,4 +1,4 @@
-module.exports = class MinHeap {
+module.exports = class Heap {
   constructor(compare){
     this.data = []
     this.compare = compare
