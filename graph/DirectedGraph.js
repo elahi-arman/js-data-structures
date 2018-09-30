@@ -1,21 +1,15 @@
-const Edge = require('./DirectedEdge')
+const Edge = require('./DirectedEdge');
+const { hasVertex } = require('./Vertex');
+const dijkstra = require('./dijkstra');
 
 class Graph {
   constructor(){
     this.vertices = []
+    this.dijkstra = dijkstra.bind(this);
   }
 
   addVertex(vertex){
     this.vertices.push(vertex)
-  }
-
-  hasVertex(set, id){
-    for (let i = 0; i < set.length; i++){
-      if (set[i].id === id){
-        return true;
-      }
-    }
-    return false
   }
 
   getVertex(id){
@@ -27,7 +21,7 @@ class Graph {
     return null
   }
 
-  addEdge(startID, endID){
+  addEdge(startID, endID, weight=0){
     const startVertex = this.getVertex(startID);
     const endVertex = this.getVertex(endID);
 
@@ -35,7 +29,7 @@ class Graph {
       return null;
     }
 
-    startVertex.edges.push(new Edge(startVertex, endVertex))
+    startVertex.edges.push(new Edge(startVertex, endVertex, weight))
   }
 
   breadthFirstTraversal(fn, rootVertex){
@@ -45,13 +39,12 @@ class Graph {
     while (notVisited.length > 0){
       const vertex = notVisited.shift();
 
-      if (this.hasVertex(visited, vertex)){
+      if (hasVertex(visited, vertex)){
         continue;
       }
       
       fn(vertex);
       visited.push(vertex);
-
 
       const nextVertices = vertex.edges.map(edge => edge.end)
       notVisited = notVisited.concat(nextVertices);

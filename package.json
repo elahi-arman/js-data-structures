@@ -7,7 +7,9 @@
   "author": "Arman Elahi",
   "license": "MIT",
   "private": false,
-  "dependencies": {},
+  "scripts": {
+    "test-dijkstra": "jest graph/dijkstra.spec.js"
+  },
   "devDependencies": {
     "jest": "^23.5.0"
   }

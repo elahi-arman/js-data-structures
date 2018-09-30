@@ -15,9 +15,9 @@ class DirectedEdge {
 
   getOther(id){
     if (this.isStart(id)){
-      return end
+      return this.end
     } else if (this.isEnd(id)){
-      return start
+      return this.start
     } else {
       return null
     }
